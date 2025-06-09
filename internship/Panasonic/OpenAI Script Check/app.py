@@ -241,7 +241,7 @@ You are a strict evaluator. Compare the following spoken product pitch (it may c
 - Assess: Accuracy of Key Features, Coverage of Selling Points, Clarity and Pitching Skill, Product Understanding, and Customer Experience.
 - Focus on factual correctness, not voice tone or accent.
 - Return a final summary followed by a score out of 10, always a whole integer (e.g., 8/10).
-- Be as succinct as possible, try your best to reduce number of output tokens, do not compromise on major quality though
+- Be as succinct as possible, try your best to minimize the number of output tokens, do not compromise on major quality though
 
 ### Product Script:
 {script}
