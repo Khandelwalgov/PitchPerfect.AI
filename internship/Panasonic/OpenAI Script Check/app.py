@@ -132,7 +132,6 @@ def submit_product():
 
 # === MAIN EVALUATION ROUTE ===
 @app.route('/upload', methods=['POST'])
-@login_required
 def upload():
     if 'audio' not in request.files:
         return jsonify({"error": "No audio file found"}), 400
