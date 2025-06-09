@@ -1,0 +1,29 @@
+# Ignore Python virtual environment
+venv/
+.venv/
+
+# Ignore SQLite database
+users.db
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code settings (optional)
+.vscode/
+
+# Environment variables file
+.env
+
+# Mac OS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Logs and output
+*.log
+
+# Ignore node modules if React frontend is present
+node_modules/

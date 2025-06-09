@@ -1,0 +1,130 @@
+.landing-root {
+  background-color: #00205B;
+  min-height: 100vh;
+  width: 100%;
+   display: flex;
+  flex-direction: column;
+  overflow-x: hidden; 
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.landing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.landing-card {
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.typing-text {
+  font-size: 2rem;
+  color: #007AC2;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #007AC2;
+  width: 0;
+  animation: typing 2s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 64px;
+  width: 100%;
+  background-color: #003580;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 100px;
+  margin-left: 20px;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* .choose-link,
+.logout-button  {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: white;
+  color: #003580;
+} */
+
+.choose-link {
+  font-size: 1rem;
+  color: white;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.choose-link:hover {
+  color: #a5c9ff;
+}
+
+.logout-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: white;
+  color: #003580;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
