@@ -232,3 +232,30 @@ html, body {
   border: 1px solid #d1d5db;
   color: #374151;
 }
+/* Score box between transcript & feedback */
+.score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.score-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.score-content {
+  background-color: #e0f2fe;   /* light blue background */
+  color: #0369a1;              /* darker blue text */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

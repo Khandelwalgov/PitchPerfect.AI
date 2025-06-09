@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, send_file
 from flask_cors import CORS
 import os
 import json
@@ -10,10 +10,11 @@ from datetime import datetime
 from uuid import uuid4
 import traceback2 as traceback
 from openai import OpenAI
+import pandas as pd
 
 # === SETUP ===
 app = Flask(__name__)
-CORS(app, supports_credentials=True,origins=["https://pitchperfectai-fls50tb72-khandelwalgovs-projects.vercel.app"])
+CORS(app, supports_credentials=True,origins=["https://pitchperfectai-khandelwalgov-khandelwalgovs-projects.vercel.app","https://pitchperfectai-fls50tb72-khandelwalgovs-projects.vercel.app","https://admindashboardpitchperfectai.vercel.app","https://admindashboardpitchperfectai-khandelwalgovs-projects.vercel.app/"])
 app.secret_key = os.getenv("SECRET_KEY")
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = True
@@ -60,6 +61,42 @@ def init_db():
     conn.close()
 
 init_db()
+
+@app.route("/verify-secret", methods=["POST"])
+def verify_secret():
+    data = request.get_json()
+    secret = data.get("secret")
+    expected = os.environ.get("SEE_TABLES") or "alphabetagamapitchperfect"
+    return jsonify({"valid": secret == expected})
+
+@app.route("/confidential", methods=["GET"])
+def confidential():
+    try:
+        conn = get_db_connection()
+        users_df = pd.read_sql_query("SELECT * FROM users", conn)
+        history_df = pd.read_sql_query("SELECT * FROM history", conn)
+        conn.close()
+
+        users_csv = "users_export.csv"
+        history_csv = "history_export.csv"
+        users_df.to_csv(users_csv, index=False)
+        history_df.to_csv(history_csv, index=False)
+
+        return jsonify({
+            "users": users_df.to_dict(orient="records"),
+            "history": history_df.to_dict(orient="records"),
+            "message": "Data fetched. Use /download-users or /download-history to download CSV."
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/download-users", methods=["GET"])
+def download_users():
+    return send_file("users_export.csv", as_attachment=True)
+
+@app.route("/download-history", methods=["GET"])
+def download_history():
+    return send_file("history_export.csv", as_attachment=True)
 
 # === AUTH DECORATOR ===
 def login_required(f):
