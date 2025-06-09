@@ -13,8 +13,11 @@ from openai import OpenAI
 
 # === SETUP ===
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True,origins=["https://pitchperfectai-fls50tb72-khandelwalgovs-projects.vercel.app"])
 app.secret_key = os.getenv("SECRET_KEY")
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=OPENAI_API_KEY)

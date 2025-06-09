@@ -38,7 +38,7 @@ export default function Signup() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/signup", form);
+      const res = await axios.post("https://pitchperfect-ai.onrender.com/signup", form);
       alert(res.data.message);
       navigate("/login");
     } catch (e) {

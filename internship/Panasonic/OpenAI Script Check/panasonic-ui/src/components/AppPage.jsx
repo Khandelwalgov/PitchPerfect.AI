@@ -17,7 +17,7 @@ export default function AppPage() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await fetch("http://localhost:5000/logout", {
+    await fetch("https://pitchperfect-ai.onrender.com/logout", {
       method: "POST",
       credentials: "include",
     });
@@ -39,7 +39,7 @@ export default function AppPage() {
       formData.append("audio", blob, "recording.wav");
 
       try {
-        const res = await fetch("http://localhost:5000/upload", {
+        const res = await fetch("https://pitchperfect-ai.onrender.com/upload", {
           method: "POST",
           body: formData,
           credentials: "include" 

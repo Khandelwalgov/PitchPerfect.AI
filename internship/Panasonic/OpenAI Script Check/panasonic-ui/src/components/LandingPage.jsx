@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PanasonicLogo from "../assets/Panasonic.png"; // Ensure this path is correct
-import productScripts from '../../../product_scripts.json';
+import productScripts from '../assets/product_scripts.json';
 
 import {
   Button,
@@ -28,14 +28,14 @@ const LandingPage = () => {
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 const handleLogout = async () => {
-    await fetch("http://localhost:5000/logout", {
+    await fetch("https://pitchperfect-ai.onrender.com/logout", {
       method: "POST",
       credentials: "include",
     });
     navigate("/");
   };
   const handleSubmit = async () => {
-    await fetch('http://localhost:5000/submit-product', {
+    await fetch('https://pitchperfect-ai.onrender.com/submit-product', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product }),

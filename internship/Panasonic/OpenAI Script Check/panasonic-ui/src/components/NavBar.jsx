@@ -7,7 +7,7 @@ export default function NavBar() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await fetch("http://localhost:5000/logout", {
+    await fetch("https://pitchperfect-ai.onrender.com/logout", {
       method: "POST",
       credentials: "include",
     });
