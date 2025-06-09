@@ -66,7 +66,7 @@ init_db()
 def verify_secret():
     data = request.get_json()
     secret = data.get("secret")
-    expected = os.environ.get("SEE_TABLES") or "alphabetagamapitchperfect"
+    expected = os.environ.get("SEE_TABLES") 
     return jsonify({"valid": secret == expected})
 
 @app.route("/confidential", methods=["GET"])
